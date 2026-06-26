@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+:root {
+  --bg: #15171c;
+  --panel: #1d2027;
+  --display-bg: #101216;
+  --key-bg: #262a33;
+  --key-bg-hover: #2e3340;
+  --key-op: #3a3f4c;
+  --key-op-hover: #454b5a;
+  --accent: #ff8a4c;
+  --accent-dim: #2c2419;
+  --text: #f2f0eb;
+  --text-dim: #8b8f99;
+  --danger: #ff5f5f;
+  --border: #2e3340;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image: radial-gradient(circle at 20% 0%, rgba(255,138,76,0.06), transparent 45%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text);
+  padding: 24px;
+}
+#root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.calc-device {
+  width: 100%;
+  max-width: 440px;
+  background: var(--panel);
+  border-radius: 28px;
+  padding: 20px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6),
+              inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.calc-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.calc-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.calc-mode-toggle {
+  display: flex;
+  background: var(--key-bg);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+.calc-mode-btn {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  padding: 5px 9px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.calc-mode-btn.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.calc-display {
+  background: var(--display-bg);
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  margin-bottom: 16px;
+  text-align: right;
+  overflow: hidden;
+}
+.calc-expr {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--text-dim);
+  min-height: 16px;
+  white-space: nowrap;
+  overflow-x: auto;
+  margin-bottom: 6px;
+}
+.calc-current {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow-x: auto;
+  letter-spacing: -0.01em;
+}
+.calc-current.error {
+  color: var(--danger);
+  font-size: 18px;
+  word-break: break-word;
+  white-space: normal;
+}
+.calc-pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+.calc-sci-pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  margin-bottom: 9px;
+}
+.calc-key {
+  border: none;
+  border-radius: 14px;
+  background: var(--key-bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.calc-sci-pad .calc-key {
+  font-size: 13px;
+  padding: 11px 0;
+}
+.calc-key:hover { background: var(--key-bg-hover); }
+.calc-key:active { transform: scale(0.95); }
+.calc-key.op { background: var(--key-op); }
+.calc-key.op:hover { background: var(--key-op-hover); }
+.calc-key.equals {
+  background: var(--accent);
+  color: #1a1108;
+  font-weight: 700;
+}
+.calc-key.equals:hover { background: #ff9a63; }
+.calc-key.danger { color: var(--danger); }
+.calc-key--wide { grid-column: span 2; }
+.calc-footnote {
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin-top: 14px;
+  opacity: 0.5;
+}
+.calc-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--display-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.calc-author-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.calc-author-course {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .calc-key { transition: none; }
+}
